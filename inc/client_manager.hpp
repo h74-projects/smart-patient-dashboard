@@ -9,6 +9,9 @@
 #include <QDateTime>
 #include <memory>
 
+#include "event.hpp"
+#include "ui.hpp"
+
 namespace spd {
 
 class Client; // forward declaration
@@ -25,10 +28,10 @@ public:
     ClientManager& operator=(ClientManager const& a_other) = delete;
 
     void connect_to_server(const QString &address, quint16 port);
-    //void send_to_data_server();
-    // void receive_event_from_server();
 
-    // void register_device();
+    Event const& current_event() const;
+    bool is_event_active() const;
+
 signals:
     void newDataReceived(QDateTime, QString, QString, QString);
 
@@ -39,8 +42,10 @@ private slots:
 private:
     std::unique_ptr<QTcpSocket> m_socket;
     quint16 m_block_size;
-    QTcpServer *serverListener;
-    QTcpSocket *incomingSocket;
+    QTcpServer *m_serverListener;
+    QTcpSocket *m_incomingSocket;
+    Event m_event;
+    bool m_is_eactive;
 };
 
 } // namespace name
