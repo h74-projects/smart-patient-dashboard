@@ -5,13 +5,17 @@ QT += core gui widgets network
 # Headers
 HEADERS += \
     ../../inc/client_manager.hpp \
-    ../../inc/client.hpp
+    ../../inc/client.hpp \
+    ../../inc/ui.hpp \
+    ../../inc/event.hpp
 
 # Sources
 SOURCES += \
     ./main.cpp \
     ../../src/client_manager.cpp \
-    ../../src/client.cpp
+    ../../src/client.cpp \
+    ../../src/ui.cpp \
+    ../../src/event.cpp
 
 # Libraries
 LIBS += -L/usr/lib/x86_64-linux-gnu/
