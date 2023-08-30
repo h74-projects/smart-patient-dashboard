@@ -66,6 +66,7 @@ void ServerManager::updateEventToRoomMap(int room_number, const Event& event)
 
 void ServerManager::send_event(int room_number) 
 {
+    qDebug() << " sent event";
     if (m_event_to_room_map.contains(room_number) && !m_event_to_room_map.value(room_number).empty()) {
         Event dequeued_Event = m_event_to_room_map[room_number].dequeue();
         qDebug() << " sent event" << dequeued_Event.getEventType() << dequeued_Event.getEventType() << '\n'; 
